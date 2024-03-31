@@ -16,21 +16,20 @@
  */
 
 import { refs } from './js/refs';
+import { createData } from './js/createData';
+import { createNoteMarkup } from './js/createNoteMarkup';
+import { localStorageAPI } from './js/localStorageAPI';
+import { renderNotes } from './js/renderNotes';
 
 refs.form.addEventListener('submit', submitForm);
+renderNotes();
 
 function submitForm(event) {
   event.preventDefault();
-  const formValues = {};
-  new FormData(refs.form).forEach((value, key) => {
-    formValues[key] = value;
-  });
-  console.log(formValues);
-  const markup = `<li class="task-list-item">
- <button class="task-list-item-btn">Удалить</button>
- <h3>${formValues.taskName}</h3>
-<p>${formValues.taskText}</p>
-  </li>`;
+  const formValues = createData();
+
+  const markup = createNoteMarkup(formValues);
 
   refs.list.insertAdjacentHTML('beforeend', markup);
+  localStorageAPI.add(formValues);
 }
