@@ -1,2 +1,0 @@
-!function(){var t={form:document.querySelector("#task-form"),list:document.querySelector("#task-list")};t.form.addEventListener("submit",(function(e){e.preventDefault();var n={};new FormData(t.form).forEach((function(t,e){n[e]=t})),console.log(n);var o='<li class="task-list-item">\n <button class="task-list-item-btn">Удалить</button>\n <h3>'.concat(n.taskName,"</h3>\n<p>").concat(n.taskText,"</p>\n  </li>");t.list.insertAdjacentHTML("beforeend",o)}))}();
-//# sourceMappingURL=index.fc917c61.js.map
